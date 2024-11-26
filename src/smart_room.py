@@ -60,8 +60,8 @@ class SmartRoom:
             GPIO.output(self.LED_PIN, False)
 
     def manage_window(self) -> None:
-        # To be implemented
-        pass
+        if self.bmp280_outdoor.temperature + 2 >= self.bmp280_indor.temperature >= 18 and self.bmp280_indor.temperature <= 30 and self.bmp280_outdoor.temperature >= 18 and self.bmp280_indor.temperature >= 30:
+            self.change_servo_angle(12)
 
     def monitor_air_quality(self) -> None:
         # To be implemented

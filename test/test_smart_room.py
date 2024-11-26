@@ -17,3 +17,11 @@ class TestSmartRoom(unittest.TestCase):
         result = system.check_room_occupancy()
         mock_sensor.assert_called_once_with(system.INFRARED_PIN)
         self.assertTrue(result)
+
+    @patch.object(GPIO, "input")
+    def test_check_enough_light(self, mock_sensor: Mock):
+        mock_sensor.return_value(True)
+        system = SmartRoom()
+        result = system.check_enough_light()
+        mock_sensor.assert_called_once_with(system.PHOTO_PIN)
+        self.assertTrue(result)

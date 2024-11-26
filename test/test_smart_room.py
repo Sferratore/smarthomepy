@@ -15,5 +15,5 @@ class TestSmartRoom(unittest.TestCase):
         mock_sensor.return_value(True)
         system = SmartRoom()
         result = system.check_room_occupancy()
-        mock_sensor.assert_called_once_with(system.INFRARED_PIN, False)
+        mock_sensor.assert_called_once_with(system.INFRARED_PIN)
         self.assertTrue(result)
